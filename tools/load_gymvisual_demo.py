@@ -17,7 +17,7 @@ COMO CORRERLO
 3) Ejecutar dentro del shell de Odoo (con el server DETENIDO o no, da igual):
        /odoo-bin shell -c /ruta/odoo.conf -d TU_BASE --no-http < load_gymvisual_demo.py
 
-       /opt/odoo19/venv/bin/python /opt/odoo19/odoo/odoo-bin shell -c /opt/odoo19/config/odoo19.conf -d pronexo_gym --no-http < load_gymvisual_demo.py
+       sudo -u odoo -s /opt/odoo19/venv/bin/python /opt/odoo19/odoo/odoo-bin shell -c /opt/odoo19/config/odoo19.conf -d odoo.goodwinds.net --no-http < load_gymvisual_demo.py
 
    (en el shell de Odoo la variable `env` ya existe; el script la usa)
 
@@ -61,7 +61,7 @@ def main(env):
     if not os.path.isdir(DATASET_DIR):
         raise SystemExit(
             "No existe DATASET_DIR=%r.\nCloná primero:\n"
-            "  git clone --depth 1 https://github.com/hasaneyldrm/exercises-dataset.git"
+            "  git clone --depth 1 https://github.com/pronexo-argentina/gym-dataset.git"
             % DATASET_DIR
         )
 
