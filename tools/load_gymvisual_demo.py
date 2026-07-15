@@ -15,9 +15,9 @@ COMO CORRERLO
 2) Editar abajo DATASET_DIR con la ruta a esa carpeta.
 
 3) Ejecutar dentro del shell de Odoo (con el server DETENIDO o no, da igual):
-       ./odoo-bin shell -c /ruta/odoo.conf -d TU_BASE --no-http < load_gymvisual_demo.py
+       /odoo-bin shell -c /ruta/odoo.conf -d TU_BASE --no-http < load_gymvisual_demo.py
 
-       ./opt/odoo19/venv/bin/python /opt/odoo19/odoo/odoo-bin shell -c /opt/odoo19/config/odoo19.conf -d pronexo_gym --no-http < load_gymvisual_demo.py
+       /opt/odoo19/venv/bin/python /opt/odoo19/odoo/odoo-bin shell -c /opt/odoo19/config/odoo19.conf -d pronexo_gym --no-http < load_gymvisual_demo.py
 
    (en el shell de Odoo la variable `env` ya existe; el script la usa)
 
@@ -31,7 +31,7 @@ import os
 import re
 
 # ======================= CONFIG — EDITAR ESTO =========================
-DATASET_DIR = os.path.expanduser("~/exercises-dataset")  # carpeta clonada
+DATASET_DIR = os.path.expanduser("/home/pronexo/gym-dataset")  # carpeta clonada
 LIMIT = None          # None = todos (~1324). Pone p.ej. 200 para una demo rapida.
 WIPE_EXISTING = True  # True = borra los ejercicios de biblioteca (sin empresa) antes de cargar
 USE_VIDEOS = True     # True = GIF animado. False = imagen fija (jpg 180x180).
