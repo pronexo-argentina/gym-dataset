@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Cargador DEMO de ejercicios con animaciones de Gym Visual (dataset hasaneyldrm).
+Cargador DEMO de ejercicios con animaciones de Gym Visual (dataset pronexo-argentina).
 
 USO EXCLUSIVO DE DEMOSTRACION / LOCAL. Las animaciones son (c) Gym Visual
 (https://gymvisual.com/) y NO pueden redistribuirse ni venderse. Este script es
