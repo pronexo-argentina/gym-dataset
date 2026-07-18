@@ -36,7 +36,17 @@ LIMIT = None          # None = todos (~1324). Pone p.ej. 200 para una demo rapid
 WIPE_EXISTING = True  # True = borra los ejercicios de biblioteca (sin empresa) antes de cargar
 USE_VIDEOS = True     # True = GIF animado. False = imagen fija (jpg 180x180).
 COMPANY_ID = False    # False = compartido (se ve en todas las empresas)
+LANG = "es"           # Idioma de las INSTRUCCIONES a cargar. Si el ejercicio no
+                      # tiene ese idioma, cae a "en". Disponibles en el dataset:
+                      # en, es, it, tr, ru, zh, hi, pl, ko
 # ======================================================================
+
+
+def _lang_text(value, lang):
+    """Devuelve el texto en `lang`; si no existe, cae a 'en' y luego a cualquiera."""
+    if isinstance(value, dict):
+        return value.get(lang) or value.get("en") or next(iter(value.values()), "")
+    return value or ""
 
 # body_part del dataset  ->  muscle_group del modelo
 BODY_TO_MUSCLE = {
@@ -109,9 +119,7 @@ def main(env):
             "muscle_group": BODY_TO_MUSCLE.get(e.get("body_part"), "full_body"),
             "level": "intermediate",
             "equipment_name": (e.get("equipment") or "").title(),
-            "instructions": (e.get("instructions") or {}).get("en", "")
-                            if isinstance(e.get("instructions"), dict)
-                            else (e.get("instructions") or ""),
+            "instructions": _lang_text(e.get("instructions"), LANG),
         })
         att = Att.create({
             "name": "%s.%s" % (_slug(e["name"]), ext),
