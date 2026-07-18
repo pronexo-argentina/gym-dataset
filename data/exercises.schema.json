@@ -50,8 +50,18 @@
         },
         "name": {
           "type": "string",
-          "description": "Full exercise name (e.g. \"3/4 sit-up\").",
+          "description": "Full exercise name in English (e.g. \"3/4 sit-up\").",
           "minLength": 1
+        },
+        "name_i18n": {
+          "type": "object",
+          "description": "Exercise name keyed by ISO 639-1 language code (e.g. {\"en\": \"3/4 sit-up\", \"es\": \"Abdominal 3/4\"}).",
+          "properties": {
+            "en": { "type": "string", "minLength": 1 },
+            "es": { "type": "string", "minLength": 1 }
+          },
+          "required": ["en", "es"],
+          "additionalProperties": { "type": "string" }
         },
         "category": {
           "type": "string",

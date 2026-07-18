@@ -113,8 +113,9 @@ def main(env):
         with open(path, "rb") as fh:
             data = fh.read()
 
+        name = _lang_text(e.get("name_i18n"), LANG) or e["name"]
         ex = Exercise.create({
-            "name": e["name"].title(),
+            "name": name if LANG != "en" else name.title(),
             "company_id": COMPANY_ID,
             "muscle_group": BODY_TO_MUSCLE.get(e.get("body_part"), "full_body"),
             "level": "intermediate",
